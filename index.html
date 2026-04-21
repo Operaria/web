@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Operaria — Encendemos la Operación</title>
-  <meta name="description" content="Ordenamos la operación para devolverle tiempo a las personas. Operaria Flow: automatización operativa para pymes de servicios." />
+  <title>Operaria — Inteligencia operativa para pymes y redes de salud</title>
+  <meta name="description" content="Capa de inteligencia operativa que ordena lo que ya existe. Flow para pymes con agenda; Health en piloto con institución de salud pública chilena. Construido sobre Google Gemini y Google Workspace." />
 
   <!-- Open Graph / WhatsApp / redes sociales -->
   <meta property="og:type"        content="website" />
   <meta property="og:url"         content="https://operaria.cl/" />
-  <meta property="og:title"       content="Operaria — Encendemos la Operación" />
-  <meta property="og:description" content="Automatización operativa para pymes de servicios. Reduce no-shows, cobra en línea y recupera tu tiempo. Primer mes sin costo." />
+  <meta property="og:title"       content="Operaria — Encendemos la operación" />
+  <meta property="og:description" content="No reemplazamos software. Ordenamos lo que ya existe. Flow en activación con primer cliente; Health en piloto institucional. Construido sobre Google Gemini 2.5." />
   <meta property="og:image"       content="https://operaria.cl/og-image.png" />
   <meta name="twitter:card"       content="summary_large_image" />
-  <meta name="twitter:title"      content="Operaria — Encendemos la Operación" />
-  <meta name="twitter:description" content="Automatización para barberías y pymes de servicios. Sin apps nuevas. Activo en 48 horas." />
+  <meta name="twitter:title"      content="Operaria — Encendemos la operación" />
+  <meta name="twitter:description" content="No reemplazamos software. Ordenamos lo que ya existe. Flow en activación con primer cliente; Health en piloto institucional." />
 
   <!-- Fuentes del sistema de marca -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -189,7 +189,7 @@
       text-transform: uppercase;
       color: var(--teal);
       margin-bottom: 20px;
-      opacity: 1; /* JS anima la entrada, pero visible por defecto */
+      opacity: 1;
     }
 
     /* =========================================================
@@ -199,14 +199,12 @@
       position: relative;
       width: 100%;
       max-width: 960px;
-      /* altura para dos líneas por estado: 2 × line-height del mayor clamp */
       min-height: clamp(200px, 28vw, 340px);
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    /* Ambos estados: apilados en el mismo punto */
     .hero-state {
       position: absolute;
       inset: 0;
@@ -216,16 +214,13 @@
       text-align: center;
     }
 
-    /* Estado 1 — JS controla opacity/transform/filter directamente en style */
     .hero-state-1 {
       opacity: 1;
       filter: blur(0px);
       transform: translateY(0px);
-      /* Sin transition CSS: el JS interpola frame a frame */
       will-change: opacity, filter, transform;
     }
 
-    /* Estado 2 — empieza oculto; JS lo interpola */
     .hero-state-2 {
       opacity: 0;
       filter: blur(8px);
@@ -233,7 +228,6 @@
       will-change: opacity, filter, transform;
     }
 
-    /* Tipografía estado 1 */
     .hero-main-claim {
       font-family: var(--font-display);
       font-weight: 300;
@@ -242,7 +236,6 @@
       letter-spacing: -0.01em;
       color: var(--off-white);
       margin: 0;
-      /* width:100% para que text-align:center del .hero-state se aplique */
       width: 100%;
       text-align: center;
     }
@@ -252,7 +245,6 @@
       color: var(--teal);
     }
 
-    /* Tipografía estado 2 — mismo peso óptico que el h1, no subtítulo */
     .hero-secondary-claim {
       font-family: var(--font-display);
       font-weight: 300;
@@ -265,14 +257,12 @@
       text-align: center;
     }
 
-    /* Cada verso: un bloque por línea — display:block fuerza el quiebre */
     .hero-line {
       display: block;
       text-align: center;
       width: 100%;
     }
 
-    /* Indicador de scroll — oculto hasta que JS lo activa con clase .is-active */
     .scroll-cue {
       position: absolute;
       bottom: 40px;
@@ -282,16 +272,14 @@
       flex-direction: column;
       align-items: center;
       gap: 8px;
-      /* Oculto e inactivo hasta que hero-state-2 está completamente instalado */
       opacity: 0;
       pointer-events: none;
-      animation: none; /* sin animación hasta activación */
+      animation: none;
       transition: opacity 0.6s ease-out;
     }
 
     .scroll-cue.is-active {
       animation: scroll-cue-pulse 2.5s ease-in-out infinite;
-      /* La animación controla la opacidad; transition ya no aplica */
       transition: none;
     }
 
@@ -316,7 +304,6 @@
 
     /* =========================================================
        SECCIÓN 2 — DESINTEGRACIÓN / RECOMPOSICIÓN
-       Texto se deshace en partículas → emerge Operaria Flow
     ========================================================= */
     #transition-zone {
       min-height: 50vh;
@@ -336,7 +323,6 @@
       max-width: 700px;
     }
 
-    /* Cada char obtiene su propio transform via Splitting */
     #dissolve-text .char {
       display: inline-block;
       transition: transform 0.6s var(--ease-out),
@@ -345,8 +331,50 @@
     }
 
     /* =========================================================
-       SECCIÓN 3 — OPERARIA FLOW
-       Sistema de 3 nodos de segmento cliente
+       SECCIÓN 3 — MANIFIESTO
+    ========================================================= */
+    #manifesto-section {
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(80px, 12vh, 160px) clamp(24px, 6vw, 80px);
+      background: var(--dark-bg);
+      text-align: center;
+    }
+
+    .manifesto-eyebrow {
+      font-family: var(--font-mono);
+      font-weight: 300;
+      font-size: 11px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 24px;
+    }
+
+    .manifesto-headline {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: clamp(36px, 5.5vw, 76px);
+      line-height: 1.08;
+      color: var(--off-white);
+      margin-bottom: 32px;
+      max-width: 900px;
+    }
+
+    .manifesto-body {
+      font-family: var(--font-ui);
+      font-size: clamp(15px, 1.4vw, 17px);
+      line-height: 1.75;
+      color: var(--off-white-90);
+      max-width: 640px;
+    }
+
+    /* =========================================================
+       SECCIÓN 4 — OPERARIA FLOW
+       Sistema de nodos: 1 principal + 2 satélites
     ========================================================= */
     #flow-section {
       min-height: 100vh;
@@ -396,11 +424,11 @@
       margin-bottom: 72px;
     }
 
-    /* Nodos de segmento — sistema conectado, no tarjetas SaaS */
+    /* Nodos de segmento — 1 principal + 2 satélites */
     .flow-nodes {
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
+      display: grid;
+      grid-template-columns: 1fr 1.25fr 1fr;
+      align-items: start;
       gap: 0;
       width: 100%;
       max-width: 1100px;
@@ -423,13 +451,16 @@
     }
 
     .flow-node {
-      flex: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
       padding: 0 clamp(12px, 2vw, 32px);
       cursor: pointer;
       position: relative;
+    }
+
+    .flow-node.node-primary {
+      order: 0;
     }
 
     .node-orbit {
@@ -444,6 +475,11 @@
       margin-bottom: 32px;
       transition: border-color 0.4s var(--ease-out),
                   box-shadow 0.4s var(--ease-out);
+    }
+
+    .flow-node.node-primary .node-orbit {
+      width: 130px;
+      height: 130px;
     }
 
     .flow-node:hover .node-orbit {
@@ -464,6 +500,11 @@
       background: rgba(74, 155, 147, 0.04);
     }
 
+    .flow-node.node-primary .node-orbit-inner {
+      width: 80px;
+      height: 80px;
+    }
+
     .flow-node:hover .node-orbit-inner {
       border-color: var(--teal);
     }
@@ -473,6 +514,10 @@
       font-size: 18px;
       color: var(--teal);
       line-height: 1;
+    }
+
+    .flow-node.node-primary .node-icon {
+      font-size: 22px;
     }
 
     /* Punto orbital girando en el borde exterior */
@@ -489,13 +534,22 @@
       opacity: 0.7;
     }
 
+    .flow-node.node-primary .node-dot {
+      transform-origin: 50% 65px;
+    }
+
     .flow-node:nth-child(1) .node-dot { animation: dot-orbit 4s linear infinite; }
-    .flow-node:nth-child(2) .node-dot { animation: dot-orbit 4s linear infinite; animation-delay: -1.33s; }
+    .flow-node:nth-child(2) .node-dot { animation: dot-orbit-primary 4s linear infinite; animation-delay: -1.33s; }
     .flow-node:nth-child(3) .node-dot { animation: dot-orbit 4s linear infinite; animation-delay: -2.66s; }
 
     @keyframes dot-orbit {
       from { transform: translateX(-50%) rotate(0deg) translateY(-52px); }
       to   { transform: translateX(-50%) rotate(360deg) translateY(-52px); }
+    }
+
+    @keyframes dot-orbit-primary {
+      from { transform: translateX(-50%) rotate(0deg) translateY(-65px); }
+      to   { transform: translateX(-50%) rotate(360deg) translateY(-65px); }
     }
 
     .node-label {
@@ -533,6 +587,7 @@
       align-items: center;
       gap: 8px;
       transition: gap 0.3s var(--ease-out), color 0.3s var(--ease-out);
+      text-decoration: none;
     }
 
     .node-cta::after {
@@ -543,6 +598,12 @@
     .node-cta:hover { color: var(--off-white); gap: 12px; }
     .node-cta:hover::after { transform: translateX(4px); }
 
+    .node-cta.disabled {
+      opacity: 0.4;
+      cursor: default;
+      pointer-events: none;
+    }
+
     /* Nodo activo (barberías) — highlight */
     .flow-node.active .node-orbit {
       border-color: var(--teal);
@@ -550,7 +611,7 @@
     }
     .flow-node.active .node-label { color: var(--teal); }
 
-    /* Tag "En operación" */
+    /* Tag badge */
     .node-badge {
       position: absolute;
       top: -8px;
@@ -565,14 +626,23 @@
       border-radius: 2px;
     }
 
+    .node-badge.badge-pipeline {
+      background: rgba(74, 155, 147, 0.2);
+      color: var(--teal);
+      border: 1px solid var(--teal-dim);
+    }
+
     @media (max-width: 640px) {
-      .flow-nodes { flex-direction: column; align-items: center; gap: 48px; }
+      .flow-nodes {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
       .flow-nodes::before { display: none; }
+      .flow-node.node-primary { order: -1; }
     }
 
     /* =========================================================
-       SECCIÓN 4 — TAKEOVER BARBERIA360
-       Pantalla completa, editorial, cinematográfico
+       SECCIÓN 5 — TAKEOVER BARBERIA360
     ========================================================= */
     #barberia-takeover {
       min-height: 100vh;
@@ -585,17 +655,14 @@
       background: var(--navy);
     }
 
-    /* Imagen editorial de fondo — fondo fotográfico generado con gradientes */
     .takeover-bg {
       position: absolute;
       inset: 0;
       background:
-        /* capa de oscurecimiento editorial */
         linear-gradient(135deg,
           rgba(15, 30, 58, 0.92) 0%,
           rgba(27, 77, 74, 0.55) 50%,
           rgba(15, 30, 58, 0.88) 100%),
-        /* textura simulada de bricks / ambiente oscuro */
         repeating-linear-gradient(
           -45deg,
           transparent,
@@ -609,26 +676,8 @@
         radial-gradient(ellipse at 75% 30%,
           rgba(74, 155, 147, 0.12) 0%,
           transparent 50%),
-        /* fondo base */
         var(--dark-bg);
       background-size: cover;
-    }
-
-    /* Foto placeholder — cuando se tengan fotos reales, reemplazar este div */
-    .takeover-photo-hint {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      padding-right: clamp(40px, 8vw, 120px);
-      opacity: 0.12;
-      font-family: var(--font-mono);
-      font-size: 9px;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--teal);
-      pointer-events: none;
     }
 
     .takeover-content {
@@ -699,7 +748,6 @@
       font-weight: 600;
     }
 
-    /* Pills de características */
     .takeover-pills {
       display: flex;
       flex-wrap: wrap;
@@ -730,6 +778,8 @@
       border: none;
       padding: 14px 32px;
       cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
       transition: background 0.25s var(--ease-out),
                   transform 0.18s var(--ease-out);
     }
@@ -739,7 +789,6 @@
       transform: translateY(-2px);
     }
 
-    /* Línea divisora vertical editorial */
     .takeover-divider {
       position: absolute;
       top: 10%;
@@ -754,7 +803,6 @@
       z-index: 1;
     }
 
-    /* Métricas laterales */
     .takeover-metrics {
       position: absolute;
       right: clamp(40px, 6vw, 80px);
@@ -776,7 +824,7 @@
     .metric-value {
       font-family: var(--font-display);
       font-weight: 300;
-      font-size: clamp(28px, 3.5vw, 44px);
+      font-size: clamp(20px, 2.5vw, 32px);
       color: var(--teal);
       line-height: 1;
     }
@@ -796,21 +844,103 @@
     }
 
     /* =========================================================
-       SECCIÓN 5 — NACIMIENTO DE LÍNEAS BLUEPRINT
-       Partículas → trazos → planos arquitectónicos
+       SECCIÓN 6 — MÉTODO
+    ========================================================= */
+    #method-section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(80px, 12vh, 160px) clamp(24px, 6vw, 80px);
+      background: var(--dark-bg);
+      text-align: center;
+    }
+
+    .method-eyebrow {
+      font-family: var(--font-mono);
+      font-weight: 300;
+      font-size: 11px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 24px;
+    }
+
+    .method-headline {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: clamp(36px, 5.5vw, 76px);
+      line-height: 1.08;
+      color: var(--off-white);
+      margin-bottom: 20px;
+    }
+
+    .method-intro {
+      font-family: var(--font-ui);
+      font-size: clamp(14px, 1.4vw, 16px);
+      line-height: 1.7;
+      color: var(--off-white-60);
+      max-width: 600px;
+      margin-bottom: 64px;
+    }
+
+    .method-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(24px, 3vw, 48px);
+      max-width: 1100px;
+      width: 100%;
+      text-align: left;
+    }
+
+    .method-step {
+      padding: clamp(20px, 2vw, 32px);
+      border-top: 1px solid var(--teal-dim);
+    }
+
+    .method-step-number {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: clamp(32px, 4vw, 48px);
+      color: var(--teal);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .method-step-title {
+      font-family: var(--font-ui);
+      font-weight: 600;
+      font-size: clamp(14px, 1.3vw, 16px);
+      color: var(--off-white);
+      margin-bottom: 10px;
+    }
+
+    .method-step-body {
+      font-family: var(--font-ui);
+      font-weight: 300;
+      font-size: clamp(13px, 1.1vw, 15px);
+      line-height: 1.65;
+      color: rgba(242, 240, 235, 0.8);
+    }
+
+    @media (max-width: 768px) {
+      .method-steps {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* =========================================================
+       SECCIÓN 7 — BLUEPRINT (puente corto)
     ========================================================= */
     #blueprint-section {
-      min-height: 160vh; /* más altura = transición más gradual, física */
+      min-height: clamp(280px, 40vh, 420px);
       position: relative;
       overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: clamp(80px, 10vh, 140px) clamp(24px, 6vw, 80px);
-
-      /* Transición coherente dentro de paleta de marca:
-         dark-bg → navy → petrol profundo → off-white
-         Sin grises verdosos ni marrones que no son marca */
+      padding: clamp(40px, 6vh, 80px) clamp(24px, 6vw, 80px);
       background: linear-gradient(180deg,
         var(--dark-bg)   0%,
         var(--dark-mid)  12%,
@@ -822,7 +952,6 @@
         var(--off-white) 100%);
     }
 
-    /* Canvas de las líneas blueprint */
     #blueprint-canvas {
       position: absolute;
       top: 0; left: 0;
@@ -842,28 +971,17 @@
       max-width: 860px;
     }
 
-    .blueprint-eyebrow {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      letter-spacing: 0.32em;
-      text-transform: uppercase;
-      color: var(--teal);
-      margin-bottom: 24px;
-      /* texto siempre legible: teal funciona tanto en oscuro como en claro */
-    }
-
     .blueprint-headline {
       font-family: var(--font-display);
       font-weight: 300;
       font-size: clamp(36px, 5.5vw, 72px);
       line-height: 1.1;
-      color: var(--off-white);  /* inicia claro sobre fondo oscuro */
-      margin-bottom: 24px;
+      color: var(--off-white);
       transition: color 0.6s ease;
     }
 
     .blueprint-headline.on-light {
-      color: var(--navy);       /* JS aplica esta clase cuando el fondo es claro */
+      color: var(--navy);
     }
 
     .blueprint-headline em {
@@ -871,22 +989,146 @@
       font-style: italic;
     }
 
-    .blueprint-body {
-      font-family: var(--font-ui);
-      font-size: clamp(14px, 1.5vw, 17px);
-      line-height: 1.7;
-      color: rgba(242, 240, 235, 0.75);  /* inicia claro */
-      max-width: 620px;
-      transition: color 0.6s ease;
+    /* =========================================================
+       SECCIÓN 8 — FUNDADOR
+    ========================================================= */
+    #founder-section {
+      min-height: 70vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(80px, 12vh, 160px) clamp(24px, 6vw, 80px);
+      background: var(--off-white);
+      text-align: center;
     }
 
-    .blueprint-body.on-light {
-      color: rgba(15, 30, 58, 0.75);     /* oscurece cuando el fondo aclara */
+    .founder-eyebrow {
+      font-family: var(--font-mono);
+      font-weight: 300;
+      font-size: 11px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 24px;
+    }
+
+    .founder-headline {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: clamp(36px, 5vw, 72px);
+      line-height: 1.08;
+      color: var(--navy);
+      margin-bottom: 40px;
+      max-width: 800px;
+    }
+
+    .founder-body {
+      font-family: var(--font-ui);
+      font-size: clamp(15px, 1.4vw, 17px);
+      line-height: 1.75;
+      color: rgba(15, 30, 58, 0.85);
+      max-width: 620px;
+      margin-bottom: 20px;
     }
 
     /* =========================================================
-       SECCIÓN 6 — VISIÓN OPERARIA
-       Revelación de estructura — el sueño
+       SECCIÓN 9 — INFRAESTRUCTURA TÉCNICA
+    ========================================================= */
+    #tech-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: clamp(80px, 12vh, 160px) clamp(24px, 6vw, 80px);
+      background: var(--off-white);
+    }
+
+    .tech-eyebrow {
+      font-family: var(--font-mono);
+      font-weight: 300;
+      font-size: 11px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .tech-headline {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: clamp(32px, 4.5vw, 64px);
+      line-height: 1.08;
+      color: var(--navy);
+      margin-bottom: 20px;
+      text-align: center;
+      max-width: 800px;
+    }
+
+    .tech-intro {
+      font-family: var(--font-ui);
+      font-size: clamp(14px, 1.4vw, 16px);
+      line-height: 1.7;
+      color: rgba(15, 30, 58, 0.7);
+      max-width: 620px;
+      margin-bottom: 64px;
+      text-align: center;
+    }
+
+    .tech-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(40px, 6vw, 100px);
+      max-width: 900px;
+      width: 100%;
+    }
+
+    .tech-col-title {
+      font-family: var(--font-ui);
+      font-weight: 600;
+      font-size: clamp(14px, 1.3vw, 16px);
+      color: var(--navy);
+      margin-bottom: 24px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .tech-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .tech-bullet {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--teal);
+      flex-shrink: 0;
+      margin-top: 8px;
+    }
+
+    .tech-item-text {
+      font-family: var(--font-ui);
+      font-size: clamp(13px, 1.2vw, 15px);
+      line-height: 1.6;
+      color: rgba(15, 30, 58, 0.8);
+    }
+
+    .tech-item-text strong {
+      color: var(--navy);
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      .tech-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* =========================================================
+       SECCIÓN 10 — VISIÓN OPERARIA
     ========================================================= */
     #vision-section {
       min-height: 100vh;
@@ -896,11 +1138,9 @@
       align-items: center;
       justify-content: center;
       padding: clamp(80px, 12vh, 160px) clamp(24px, 6vw, 80px);
-      /* Continuidad desde el blueprint: empieza en off-white puro, sin gradiente brusco */
       background: var(--off-white);
     }
 
-    /* Cuadrícula de fondo tipo planos — CSS puro, sutil */
     #vision-section::before {
       content: '';
       position: absolute;
@@ -910,11 +1150,9 @@
         linear-gradient(90deg, rgba(15,30,58,0.06) 1px, transparent 1px);
       background-size: 80px 80px;
       opacity: 1;
-      /* La cuadrícula se revela gradualmente con scroll — JS la controla */
       transition: opacity 1s ease;
     }
 
-    /* Línea de separación sutil entre blueprint y vision */
     #vision-section::after {
       content: '';
       position: absolute;
@@ -985,7 +1223,6 @@
       margin-bottom: 40px;
     }
 
-    /* Pilares de misión */
     .vision-pillars {
       display: flex;
       flex-direction: column;
@@ -1022,7 +1259,6 @@
       font-weight: 600;
     }
 
-    /* Lado derecho — diagrama de sistema */
     .vision-right {
       display: flex;
       align-items: center;
@@ -1036,7 +1272,6 @@
       position: relative;
     }
 
-    /* Anillos concéntricos — como órbitas */
     .vision-ring {
       position: absolute;
       inset: 0;
@@ -1073,7 +1308,6 @@
       50%       { opacity: 1; }
     }
 
-    /* Etiquetas en los anillos */
     .ring-label {
       position: absolute;
       font-family: var(--font-mono);
@@ -1096,10 +1330,10 @@
     }
 
     /* =========================================================
-       SECCIÓN 7 — CIERRE / CTA FINAL
+       SECCIÓN 11 — STATUS + CIERRE
     ========================================================= */
-    #closing-section {
-      min-height: 80vh;
+    #status-closing-section {
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -1108,16 +1342,80 @@
       padding: clamp(80px, 12vh, 160px) clamp(24px, 6vw, 80px);
       background: linear-gradient(180deg,
         var(--off-white) 0%,
-        var(--dark-mid) 60%,
+        var(--off-white) 40%,
+        var(--dark-mid) 75%,
         var(--dark-bg) 100%);
       position: relative;
       overflow: hidden;
     }
 
+    /* Sub-bloque A — Status */
+    .status-block {
+      position: relative;
+      z-index: 2;
+      margin-bottom: clamp(60px, 10vh, 120px);
+    }
+
+    .status-eyebrow {
+      font-family: var(--font-mono);
+      font-weight: 300;
+      font-size: 11px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 16px;
+    }
+
+    .status-headline {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: clamp(40px, 6vw, 72px);
+      color: var(--navy);
+      margin-bottom: 32px;
+    }
+
+    .status-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 600px;
+      text-align: left;
+    }
+
+    .status-list li {
+      font-family: var(--font-ui);
+      font-size: clamp(14px, 1.3vw, 16px);
+      line-height: 1.6;
+      color: rgba(15, 30, 58, 0.8);
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .status-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--teal);
+    }
+
+    /* Sub-bloque B — CTA cierre */
+    .closing-block {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
     /* Eco de ondas en el cierre */
     .closing-wave {
       position: absolute;
-      top: 50%;
+      top: 65%;
       left: 50%;
       transform: translate(-50%, -50%);
       border-radius: 50%;
@@ -1134,14 +1432,6 @@
       to   { transform: translate(-50%, -50%) scale(8); opacity: 0; }
     }
 
-    .closing-content {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
     .closing-label {
       font-family: var(--font-mono);
       font-size: 10px;
@@ -1154,69 +1444,67 @@
     .closing-headline {
       font-family: var(--font-display);
       font-weight: 300;
-      font-size: clamp(40px, 6vw, 88px);
-      line-height: 1.05;
+      font-size: clamp(36px, 5.5vw, 76px);
+      line-height: 1.08;
       color: var(--off-white);
-      margin-bottom: 24px;
+      margin-bottom: 48px;
     }
 
     .closing-headline em { color: var(--teal); font-style: italic; }
 
-    .closing-sub {
-      font-family: var(--font-mono);
-      font-size: clamp(11px, 1.3vw, 13px);
-      color: var(--off-white-60);
-      letter-spacing: 0.1em;
-      margin-bottom: 48px;
-    }
-
-    .closing-cta {
-      display: flex;
+    .closing-ctas {
+      display: grid;
+      grid-template-columns: repeat(3, auto);
       gap: 16px;
-      flex-wrap: wrap;
-      justify-content: center;
     }
 
-    .btn-primary {
+    .cta-pill {
       font-family: var(--font-ui);
       font-weight: 600;
       font-size: 12px;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--dark-bg);
-      background: var(--teal);
-      border: none;
-      padding: 14px 36px;
+      text-decoration: none;
+      padding: 14px 32px;
+      border-radius: 40px;
       cursor: pointer;
       transition: background 0.25s var(--ease-out),
-                  transform 0.18s var(--ease-out);
-    }
-
-    .btn-primary:hover {
-      background: var(--off-white);
-      transform: translateY(-2px);
-    }
-
-    .btn-secondary {
-      font-family: var(--font-ui);
-      font-weight: 500;
-      font-size: 12px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--off-white-60);
-      background: none;
-      border: 1px solid rgba(242, 240, 235, 0.2);
-      padding: 14px 36px;
-      cursor: pointer;
-      transition: color 0.25s var(--ease-out),
+                  color 0.25s var(--ease-out),
                   border-color 0.25s var(--ease-out),
                   transform 0.18s var(--ease-out);
+      display: inline-block;
+      text-align: center;
     }
 
-    .btn-secondary:hover {
-      color: var(--off-white);
-      border-color: var(--off-white-60);
+    .cta-pill-primary {
+      background: var(--teal);
+      color: var(--dark-bg);
+      border: 2px solid var(--teal);
+    }
+
+    .cta-pill-primary:hover {
+      background: var(--off-white);
+      border-color: var(--off-white);
       transform: translateY(-2px);
+    }
+
+    .cta-pill-secondary {
+      background: transparent;
+      color: var(--off-white);
+      border: 2px solid var(--teal);
+    }
+
+    .cta-pill-secondary:hover {
+      background: rgba(74, 155, 147, 0.15);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 640px) {
+      .closing-ctas {
+        grid-template-columns: 1fr;
+        width: 100%;
+        max-width: 320px;
+      }
     }
 
     /* =========================================================
@@ -1265,7 +1553,7 @@
     ========================================================= */
     .reveal {
       opacity: 0;
-      transform: translateY(0); /* no CLS */
+      transform: translateY(0);
       filter: blur(2px);
       transition: opacity 0.8s var(--ease-out),
                   filter 0.8s var(--ease-out);
@@ -1329,16 +1617,18 @@
   <!-- Canvas global de partículas (ondas + fotones del cursor) -->
   <canvas id="particle-canvas" aria-hidden="true"></canvas>
 
-  <!-- Blueprint canvas se inserta dentro de la sección blueprint por JS -->
-
   <!-- Navegación de puntos laterales -->
   <nav class="section-nav" aria-label="Secciones">
     <div class="section-dot active" data-target="hero" title="Portada"></div>
+    <div class="section-dot" data-target="manifesto-section" title="Manifiesto"></div>
     <div class="section-dot" data-target="flow-section" title="Operaria Flow"></div>
     <div class="section-dot" data-target="barberia-takeover" title="BarberIA 360°"></div>
-    <div class="section-dot" data-target="blueprint-section" title="La estructura"></div>
+    <div class="section-dot" data-target="method-section" title="Método"></div>
+    <div class="section-dot" data-target="blueprint-section" title="Blueprint"></div>
+    <div class="section-dot" data-target="founder-section" title="Fundador"></div>
+    <div class="section-dot" data-target="tech-section" title="Infraestructura"></div>
     <div class="section-dot" data-target="vision-section" title="Visión"></div>
-    <div class="section-dot" data-target="closing-section" title="Comenzar"></div>
+    <div class="section-dot" data-target="status-closing-section" title="Contacto"></div>
   </nav>
 
   <!-- ============================================================
@@ -1346,18 +1636,13 @@
        Oscura, magnética, logo orbital en reposo
   ============================================================ -->
   <section id="hero">
-    <!-- Logo isotipo Signal — canvas definitivo -->
     <div class="logo-orbital-wrap" aria-label="Operaria">
       <canvas id="hero-isotipo" width="130" height="130" aria-hidden="true"></canvas>
     </div>
 
-    <!-- Label de sistema -->
     <p class="hero-label" id="hero-label">Sistema Operario — v1.0</p>
 
-    <!-- Secuencia hero: dos estados, no dos líneas -->
     <div class="hero-sequence" id="hero-claim" aria-label="Encendemos la operación, para devolverle el tiempo a las personas">
-
-      <!-- Estado 1: tono -->
       <div class="hero-state hero-state-1" id="hero-state-1" aria-hidden="false">
         <h1 class="hero-main-claim" data-splitting>
           <span class="hero-line hero-line-1">Encendemos</span>
@@ -1365,17 +1650,14 @@
         </h1>
       </div>
 
-      <!-- Estado 2: sentido -->
       <div class="hero-state hero-state-2" id="hero-state-2" aria-hidden="true">
         <h2 class="hero-secondary-claim">
           <span class="hero-line hero-line-3">para devolverle el tiempo</span>
           <span class="hero-line hero-line-4">a las personas</span>
         </h2>
       </div>
-
     </div>
 
-    <!-- Cue de scroll -->
     <div class="scroll-cue" id="scroll-cue" aria-hidden="true">
       <div class="scroll-cue-line"></div>
       <span class="scroll-cue-label">Scroll</span>
@@ -1383,7 +1665,7 @@
   </section>
 
   <!-- ============================================================
-       SECCIÓN TRANSICIÓN — DESINTEGRACIÓN DE TEXTO
+       SECCIÓN 2 — DESINTEGRACIÓN DE TEXTO
   ============================================================ -->
   <section id="transition-zone" aria-hidden="true">
     <p id="dissolve-text" data-splitting>
@@ -1392,8 +1674,21 @@
   </section>
 
   <!-- ============================================================
-       SECCIÓN 3 — OPERARIA FLOW
-       Sistema de nodos conectados — 3 segmentos de cliente
+       SECCIÓN 3 — MANIFIESTO
+  ============================================================ -->
+  <section id="manifesto-section">
+    <p class="manifesto-eyebrow reveal">— Qué es Operaria —</p>
+    <h2 class="manifesto-headline reveal reveal-delay-1">
+      No somos software.<br/>Somos la capa que ordena lo que ya existe.
+    </h2>
+    <p class="manifesto-body reveal reveal-delay-2">
+      Operaria es una capa de inteligencia operativa. No reemplaza herramientas, no pide aprender una aplicación nueva, no entrega dashboards que nadie abre. Entra al sistema que el negocio o la institución ya usa —WhatsApp, agenda, planillas, pagos— y lo pone a trabajar en conjunto. Cuando la operación queda ordenada, el tiempo vuelve a las personas que estaban sosteniéndola con memoria y paciencia.
+    </p>
+  </section>
+
+  <!-- ============================================================
+       SECCIÓN 4 — OPERARIA FLOW
+       1 nodo principal + 2 satélites
   ============================================================ -->
   <section id="flow-section">
     <p class="flow-eyebrow reveal">— Línea activa —</p>
@@ -1404,108 +1699,95 @@
       La capa que conecta WhatsApp, agenda, pagos y registros usando lo que el negocio ya tiene
     </p>
 
-    <!-- Sistema de 3 nodos -->
     <div class="flow-nodes" role="list">
 
-      <!-- Nodo 1: Barberías — EN OPERACIÓN -->
-      <div class="flow-node active reveal reveal-delay-1" role="listitem" id="node-barberia">
+      <!-- Nodo satélite 1: Restaurantes -->
+      <div class="flow-node reveal reveal-delay-1" role="listitem">
         <div class="node-orbit">
           <div class="node-dot"></div>
-          <div class="node-badge">En operación</div>
-          <div class="node-orbit-inner">
-            <span class="node-icon" aria-hidden="true">✂</span>
-          </div>
-        </div>
-        <p class="node-label">Barberías</p>
-        <p class="node-sub">
-          WhatsApp activo<br/>
-          Agenda automática<br/>
-          Recordatorios y cobros
-        </p>
-        <button class="node-cta" aria-label="Ver BarberIA 360">
-          BarberIA 360°
-        </button>
-      </div>
-
-      <!-- Nodo 2: Restaurantes -->
-      <div class="flow-node reveal reveal-delay-2" role="listitem">
-        <div class="node-orbit">
-          <div class="node-dot"></div>
+          <div class="node-badge badge-pipeline">En pipeline Q3 2026</div>
           <div class="node-orbit-inner">
             <span class="node-icon" aria-hidden="true">◇</span>
           </div>
         </div>
         <p class="node-label">Restaurantes</p>
         <p class="node-sub">
-          Reservas sin fricción<br/>
-          Flujo de mesa<br/>
-          Confirmación automática
+          Reservas, flujo de mesa,<br/>confirmación automática
         </p>
-        <button class="node-cta" aria-label="Próximamente">
-          Próximo
-        </button>
+        <span class="node-cta disabled">Próximo</span>
       </div>
 
-      <!-- Nodo 3: Clínicas / Salud -->
+      <!-- Nodo principal: Barberías -->
+      <div class="flow-node active node-primary reveal reveal-delay-2" role="listitem" id="node-barberia">
+        <div class="node-orbit">
+          <div class="node-dot"></div>
+          <div class="node-badge">Primer vertical</div>
+          <div class="node-orbit-inner">
+            <span class="node-icon" aria-hidden="true">✂</span>
+          </div>
+        </div>
+        <p class="node-label">Barberías</p>
+        <p class="node-sub">
+          WhatsApp nativo / Agenda automática<br/>Recordatorios y cobros
+        </p>
+        <a class="node-cta" href="#barberia-takeover" aria-label="Ver BarberIA 360°">
+          BarberIA 360°
+        </a>
+      </div>
+
+      <!-- Nodo satélite 2: Centros de salud y belleza -->
       <div class="flow-node reveal reveal-delay-3" role="listitem">
         <div class="node-orbit">
           <div class="node-dot"></div>
+          <div class="node-badge badge-pipeline">En pipeline Q3 2026</div>
           <div class="node-orbit-inner">
             <span class="node-icon" aria-hidden="true">○</span>
           </div>
         </div>
-        <p class="node-label">Clínicas</p>
+        <p class="node-label">Centros de salud y belleza</p>
         <p class="node-sub">
-          Citas y recordatorios<br/>
-          Registro de pacientes<br/>
-          Operación sin ruido
+          Citas, recordatorios,<br/>registro sin fricción
         </p>
-        <button class="node-cta" aria-label="Próximamente">
-          Próximo
-        </button>
+        <span class="node-cta disabled">Próximo</span>
       </div>
 
     </div>
   </section>
 
   <!-- ============================================================
-       SECCIÓN 4 — TAKEOVER BARBERIA360
-       Pantalla completa, cinematográfica, editorial
+       SECCIÓN 5 — TAKEOVER BARBERIA360
   ============================================================ -->
   <section id="barberia-takeover" aria-labelledby="barberia-title">
 
     <div class="takeover-bg" aria-hidden="true"></div>
-    <div class="takeover-photo-hint" aria-hidden="true">// fotografía real → reemplazar aquí</div>
     <div class="takeover-divider" aria-hidden="true"></div>
 
     <!-- Métricas laterales -->
-    <aside class="takeover-metrics" aria-label="Métricas de impacto">
+    <aside class="takeover-metrics" aria-label="Métricas clave">
       <div class="metric">
-        <span class="metric-value">3h</span>
-        <span class="metric-label">Devueltas por semana</span>
+        <span class="metric-value">WhatsApp nativo</span>
+        <span class="metric-label">sin apps nuevas</span>
       </div>
       <div class="metric">
-        <span class="metric-value">100%</span>
-        <span class="metric-label">WhatsApp nativo</span>
+        <span class="metric-value">Stack existente</span>
+        <span class="metric-label">sin migraciones</span>
       </div>
       <div class="metric">
-        <span class="metric-value">0</span>
-        <span class="metric-label">Apps nuevas</span>
+        <span class="metric-value">Activo en 48h</span>
+        <span class="metric-label">desde firma</span>
       </div>
     </aside>
 
     <!-- Contenido editorial -->
     <div class="takeover-content">
-      <p class="takeover-eyebrow">Operaria Flow — Barberías</p>
+      <p class="takeover-eyebrow">Operaria Flow — Primer cliente en activación</p>
       <h2 class="takeover-brand" id="barberia-title">
         barber<span>IA</span><br/>360°
       </h2>
       <p class="takeover-tagline">Tu WhatsApp trabaja, mientras tú tomas la navaja.</p>
 
       <p class="takeover-claim">
-        Automatizamos la agenda, los recordatorios y los cobros de tu barbería
-        usando <strong>lo que ya tienes</strong>: tu WhatsApp y tu número de siempre.
-        Sin apps nuevas. Sin fricción. Solo tiempo devuelto.
+        BarberIA 360° es la expresión concreta de Operaria Flow para barberías. Un sistema que toma el WhatsApp del negocio, conecta la agenda, gestiona los recordatorios, cobra y deja registro financiero —sin apps nuevas, sin cambiar el flujo que el equipo ya conoce. Primer cliente en activación durante Q2 2026.
       </p>
 
       <div class="takeover-pills" aria-label="Características">
@@ -1516,64 +1798,151 @@
         <span class="pill">Activo en 48h</span>
       </div>
 
-      <button class="takeover-cta">
+      <a class="takeover-cta" href="#method-section">
         Ver cómo funciona
-      </button>
+      </a>
     </div>
   </section>
 
   <!-- ============================================================
-       SECCIÓN 5 — NACIMIENTO DE LÍNEAS BLUEPRINT
-       El fondo oscuro cede al off-white.
-       Las partículas teal dejan trazos → planos arquitectónicos.
+       SECCIÓN 6 — MÉTODO
+  ============================================================ -->
+  <section id="method-section">
+    <p class="method-eyebrow reveal">— Cómo entramos a un sistema —</p>
+    <h2 class="method-headline reveal reveal-delay-1">No improvisamos. Ordenamos.</h2>
+    <p class="method-intro reveal reveal-delay-2">
+      Cada sistema es distinto, pero el método no. Así ordenamos la operación de un negocio o una institución:
+    </p>
+
+    <div class="method-steps">
+      <div class="method-step reveal">
+        <p class="method-step-number">01</p>
+        <p class="method-step-title">Diagnóstico.</p>
+        <p class="method-step-body">Levantamos las fricciones invisibles del sistema actual: dónde se pierde tiempo, dónde se rompen los traspasos, dónde la memoria sostiene lo que debería sostener el sistema.</p>
+      </div>
+      <div class="method-step reveal reveal-delay-1">
+        <p class="method-step-number">02</p>
+        <p class="method-step-title">Journey operativo.</p>
+        <p class="method-step-body">Diseñamos el flujo completo que el cliente va a vivir. Qué pasa cuando escribe, qué pasa cuando no responde, qué pasa cuando cancela. Todo mapeado antes de tocar código.</p>
+      </div>
+      <div class="method-step reveal reveal-delay-2">
+        <p class="method-step-number">03</p>
+        <p class="method-step-title">Construcción del flujo.</p>
+        <p class="method-step-body">Automatizamos sobre el stack existente (WhatsApp, Sheets, Calendar, pagos) usando orquestación Make + Gemini 2.5. Sin software nuevo.</p>
+      </div>
+      <div class="method-step reveal reveal-delay-3">
+        <p class="method-step-number">04</p>
+        <p class="method-step-title">Setup y activación.</p>
+        <p class="method-step-body">Conectamos las credenciales reales del cliente, ajustamos las variables específicas y dejamos el sistema en producción.</p>
+      </div>
+      <div class="method-step reveal reveal-delay-4">
+        <p class="method-step-number">05</p>
+        <p class="method-step-title">QA y monitoreo.</p>
+        <p class="method-step-body">Validamos extremo a extremo antes del go-live y mantenemos observabilidad sobre cada ejecución. El sistema aprende del sistema.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECCIÓN 7 — BLUEPRINT (puente corto)
   ============================================================ -->
   <section id="blueprint-section" aria-labelledby="blueprint-title">
     <canvas id="blueprint-canvas" aria-hidden="true"></canvas>
     <div class="blueprint-content">
-      <p class="blueprint-eyebrow reveal">— La estructura —</p>
-      <h2 class="blueprint-headline reveal reveal-delay-1" id="blueprint-title">
-        Donde pasan las partículas,<br/><em>nace el orden</em>
+      <h2 class="blueprint-headline reveal" id="blueprint-title">
+        Donde pasa una partícula, <em>queda una línea.</em>
       </h2>
-      <p class="blueprint-body reveal reveal-delay-2">
-        Cada proceso que tocamos deja un trazo. Esos trazos se organizan.
-        Lo que era ruido operativo empieza a tener geometría, lógica, estructura.
-        Así es como Operaria entra a un sistema: silenciosamente, por el flujo.
-      </p>
     </div>
   </section>
 
   <!-- ============================================================
-       SECCIÓN 6 — VISIÓN OPERARIA
-       Intervenir donde nadie ve. Devolver tiempo.
+       SECCIÓN 8 — FUNDADOR
+  ============================================================ -->
+  <section id="founder-section">
+    <p class="founder-eyebrow reveal">— El origen —</p>
+    <h2 class="founder-headline reveal reveal-delay-1">
+      Operaria nace de mirar sistemas complejos desde adentro.
+    </h2>
+    <p class="founder-body reveal reveal-delay-2">
+      El fundador de Operaria es gestor hospitalario y médico. Durante años ha trabajado dentro de redes de salud pública en Chile, coordinando indicadores, eficiencia operativa y equipos en entornos donde cada hora tiene consecuencias sobre personas reales.
+    </p>
+    <p class="founder-body reveal reveal-delay-2">
+      Esa mirada —la del operador que ve dónde se pierde la energía del sistema antes que nadie más— es la que hoy conduce Operaria. No venimos desde la tecnología buscando un problema. Venimos desde la operación, buscando la forma más limpia de devolver tiempo.
+    </p>
+  </section>
+
+  <!-- ============================================================
+       SECCIÓN 9 — INFRAESTRUCTURA TÉCNICA
+  ============================================================ -->
+  <section id="tech-section">
+    <p class="tech-eyebrow reveal">— Cómo está construido —</p>
+    <h2 class="tech-headline reveal reveal-delay-1">
+      Energía en la operación, inteligencia en la infraestructura.
+    </h2>
+    <p class="tech-intro reveal reveal-delay-2">
+      Operaria no corre sobre una aplicación nueva. Corre sobre el stack que las instituciones y los negocios ya usan — y lo ordena.
+    </p>
+
+    <div class="tech-grid reveal">
+      <div class="tech-col">
+        <p class="tech-col-title">Hoy en producción</p>
+        <div class="tech-item">
+          <span class="tech-bullet"></span>
+          <p class="tech-item-text"><strong>Google Gemini 2.5 Pro</strong> — razonamiento operativo</p>
+        </div>
+        <div class="tech-item">
+          <span class="tech-bullet"></span>
+          <p class="tech-item-text"><strong>Google Gemini 2.5 Flash</strong> — respuestas en tiempo real en WhatsApp</p>
+        </div>
+        <div class="tech-item">
+          <span class="tech-bullet"></span>
+          <p class="tech-item-text"><strong>Google Workspace API</strong> — Sheets como capa operacional, Drive como repositorio, Calendar como agenda viva</p>
+        </div>
+        <div class="tech-item">
+          <span class="tech-bullet"></span>
+          <p class="tech-item-text"><strong>Make</strong> — orquestador de flujos hasta la fase de escalamiento</p>
+        </div>
+      </div>
+      <div class="tech-col">
+        <p class="tech-col-title">Roadmap Operaria Health</p>
+        <div class="tech-item">
+          <span class="tech-bullet"></span>
+          <p class="tech-item-text"><strong>Vertex AI</strong> — orquestación de agentes clínicos y operativos</p>
+        </div>
+        <div class="tech-item">
+          <span class="tech-bullet"></span>
+          <p class="tech-item-text"><strong>BigQuery</strong> — inteligencia operativa sobre datos hospitalarios en tiempo real</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECCIÓN 10 — VISIÓN OPERARIA (Health)
   ============================================================ -->
   <section id="vision-section" aria-labelledby="vision-title">
     <div class="vision-layout">
 
-      <!-- Columna izquierda — texto revelación -->
       <div class="vision-left">
-        <p class="vision-eyebrow reveal">Operaria Health — Horizonte</p>
+        <p class="vision-eyebrow reveal">Operaria Health — Línea en piloto</p>
         <h2 class="vision-headline reveal reveal-delay-1" id="vision-title">
-          Intervenir la operación<br/>de quienes <em>menos tiempo<br/>tienen por perder</em>
+          Diseñar la operación<br/>de quienes <em>menos tiempo<br/>tienen por perder.</em>
         </h2>
         <p class="vision-body reveal reveal-delay-2">
-          Operaria nació mirando los hospitales. Donde la ineficiencia no es
-          un costo de gestión — es tiempo de vida. Estamos construyendo la capa
-          que conecta la operación de las instituciones que más importan.
+          Operaria Health es la línea en piloto: una capa de inteligencia operativa diseñada para devolverle tiempo a los pacientes. En un hospital, cada hora perdida en coordinación, espera o fricción administrativa es una hora que el paciente no recupera. Ahí es donde entramos: a ordenar lo que ya existe, para que el sistema vuelva a funcionar a la velocidad de quien lo necesita. Durante Q2 2026 iniciamos el primer piloto con una institución de salud pública chilena.
         </p>
 
         <div class="vision-pillars reveal reveal-delay-3">
           <div class="pillar">
             <span class="pillar-number">01</span>
             <p class="pillar-text">
-              <strong>Flow primero.</strong> Aprendemos con cada pyme de servicios la textura
-              real de la operación.
+              <strong>Flow primero.</strong> Aprendemos de cada pyme la textura real de la operación.
             </p>
           </div>
           <div class="pillar">
             <span class="pillar-number">02</span>
             <p class="pillar-text">
-              <strong>Health después.</strong> Llevamos esa inteligencia operativa
-              a clínicas, hospitales y centros de salud.
+              <strong>Health en piloto.</strong> Llevamos esa inteligencia a una primera institución de salud pública.
             </p>
           </div>
           <div class="pillar">
@@ -1596,7 +1965,7 @@
           <span class="ring-label ring-label-1">Operaria Health</span>
           <span class="ring-label ring-label-2">Clínicas · Hospitales</span>
           <span class="ring-label ring-label-3">Operaria Flow</span>
-          <span class="ring-label ring-label-4">Pymes<br/>de servicios</span>
+          <span class="ring-label ring-label-4">Pymes<br/>con agenda</span>
         </div>
       </div>
 
@@ -1604,25 +1973,35 @@
   </section>
 
   <!-- ============================================================
-       SECCIÓN 7 — CIERRE / CTA FINAL
+       SECCIÓN 11 — STATUS + CIERRE
   ============================================================ -->
-  <section id="closing-section" aria-labelledby="closing-title">
+  <section id="status-closing-section" aria-labelledby="closing-title">
     <!-- Ondas de eco -->
     <div class="closing-wave" aria-hidden="true"></div>
     <div class="closing-wave" aria-hidden="true"></div>
     <div class="closing-wave" aria-hidden="true"></div>
 
-    <div class="closing-content">
-      <p class="closing-label">¿Comenzamos?</p>
-      <h2 class="closing-headline reveal" id="closing-title">
+    <!-- Sub-bloque A: Status -->
+    <div class="status-block">
+      <p class="status-eyebrow reveal">— Este trimestre —</p>
+      <h3 class="status-headline reveal reveal-delay-1">Q2 2026</h3>
+      <ul class="status-list reveal reveal-delay-2">
+        <li>Activando BarberIA 360° con primer cliente en operación real.</li>
+        <li>Cerrando el piloto de Operaria Health con institución de salud pública chilena.</li>
+        <li>Validando el método de diagnóstico operativo para el vertical de restaurantes.</li>
+      </ul>
+    </div>
+
+    <!-- Sub-bloque B: CTA diferenciado -->
+    <div class="closing-block">
+      <p class="closing-label reveal">¿Desde dónde llegas?</p>
+      <h2 class="closing-headline reveal reveal-delay-1" id="closing-title">
         Ordenamos tu operación.<br/><em>Tú recuperas el tiempo.</em>
       </h2>
-      <p class="closing-sub reveal reveal-delay-1">
-        Primer mes sin costo · Activo en 48 horas · Sin apps nuevas
-      </p>
-      <div class="closing-cta reveal reveal-delay-2">
-        <a href="https://wa.me/56TUTELEFONO?text=Hola%20Operaria%2C%20quiero%20informaci%C3%B3n%20para%20mi%20barber%C3%ADa" target="_blank" rel="noopener" class="btn-primary" style="display:inline-block;text-decoration:none;">Quiero empezar</a>
-        <a href="https://calendly.com/operaria/demo" target="_blank" rel="noopener" class="btn-secondary" style="display:inline-block;text-decoration:none;">Agendar demo</a>
+      <div class="closing-ctas reveal reveal-delay-2">
+        <a href="mailto:contacto@operaria.cl?subject=Operaria%20Flow%20%E2%80%94%20Automatizar%20mi%20negocio" class="cta-pill cta-pill-primary">Automatizar mi negocio</a>
+        <a href="mailto:contacto@operaria.cl?subject=Operaria%20Health%20%E2%80%94%20Conversar" class="cta-pill cta-pill-secondary">Conversar Operaria Health</a>
+        <a href="mailto:contacto@operaria.cl?subject=Operaria%20%E2%80%94%20Colaboraci%C3%B3n" class="cta-pill cta-pill-secondary">Explorar colaboración</a>
       </div>
     </div>
   </section>
@@ -1633,27 +2012,8 @@
   <footer>
     <span class="footer-wordmark">Operaria</span>
     <span class="footer-tagline">Encendemos la operación</span>
-    <span class="footer-copy">© 2026 Operaria SpA · Chile</span>
+    <span class="footer-copy">© 2026 Operaria · Chile</span>
   </footer>
-
-  <!-- ============================================================
-       BOTÓN FLOTANTE WHATSAPP
-  ============================================================ -->
-  <a href="https://wa.me/56TUTELEFONO?text=Hola%20Operaria%2C%20quiero%20informaci%C3%B3n%20para%20mi%20barber%C3%ADa"
-     target="_blank" rel="noopener"
-     aria-label="Contactar por WhatsApp"
-     style="position:fixed;bottom:28px;right:28px;z-index:9000;
-            background:#25D366;border-radius:50%;width:58px;height:58px;
-            display:flex;align-items:center;justify-content:center;
-            box-shadow:0 4px 20px rgba(37,211,102,0.45);
-            text-decoration:none;
-            transition:transform 0.2s ease,box-shadow 0.2s ease;"
-     onmouseover="this.style.transform='scale(1.1)';this.style.boxShadow='0 6px 28px rgba(37,211,102,0.6)'"
-     onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 20px rgba(37,211,102,0.45)'">
-    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="white">
-      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-    </svg>
-  </a>
 
 
   <!-- ============================================================
@@ -1696,34 +2056,27 @@
         this.x  = x + (Math.random() - 0.5) * 4;
         this.y  = y + (Math.random() - 0.5) * 4;
 
-        // Ángulo de emisión: principalmente hacia afuera del cursor
         const spread = burst ? Math.PI * 2 : Math.PI * 0.7;
         const baseAngle = Math.atan2(mouse.vy || 0, mouse.vx || 0) + Math.PI;
         this.angle = baseAngle + (Math.random() - 0.5) * spread;
 
-        // Velocidad base + boost por scroll
         const speedMult = mouse.scrolling ? 2.8 : (mouse.hovering ? 1.8 : 1);
         this.speed  = (0.6 + Math.random() * 1.8) * speedMult;
         this.vx     = Math.cos(this.angle) * this.speed;
         this.vy     = Math.sin(this.angle) * this.speed;
 
-        // Vida
         this.life    = 1;
         this.decay   = 0.008 + Math.random() * 0.016;
 
-        // Tamaño
         this.radius  = burst ? (1.5 + Math.random() * 2.5) : (0.8 + Math.random() * 1.8);
 
-        // Color: alterna teal y off-white
         this.isTeal  = Math.random() > 0.35;
 
-        // Trail
         this.trail   = [];
         this.trailLen = burst ? 8 : 4;
       }
 
       update() {
-        // Guardar trail
         this.trail.push({ x: this.x, y: this.y });
         if (this.trail.length > this.trailLen) this.trail.shift();
 
@@ -1738,7 +2091,6 @@
         const alpha = Math.max(0, this.life);
         const color = this.isTeal ? `74,155,147` : `242,240,235`;
 
-        // Trail difuminado
         for (let i = 0; i < this.trail.length; i++) {
           const t = this.trail[i];
           const trailAlpha = alpha * (i / this.trail.length) * 0.3;
@@ -1748,13 +2100,11 @@
           ctx.fill();
         }
 
-        // Cuerpo del fotón
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(${color}, ${alpha})`;
         ctx.fill();
 
-        // Glow suave
         if (this.isTeal && alpha > 0.4) {
           ctx.beginPath();
           ctx.arc(this.x, this.y, this.radius * 2.5, 0, Math.PI * 2);
@@ -1770,7 +2120,6 @@
       }
 
       reset() {
-        // Las ondas nacen mayoritariamente del área visible
         this.x      = Math.random() * W;
         this.y      = Math.random() * H;
         this.r      = 0;
@@ -1801,11 +2150,10 @@
     // Inicializar ondas de fondo
     for (let i = 0; i < 12; i++) {
       const w = new Wave();
-      w.r = Math.random() * w.maxR; // empezar dispersas
+      w.r = Math.random() * w.maxR;
       waves.push(w);
     }
 
-    // Emitir fotones continuamente desde el cursor
     let emissionTimer = 0;
     let lastBurstSection = null;
 
@@ -1817,25 +2165,20 @@
       }
     }
 
-    // Loop principal
     function loop() {
       requestAnimationFrame(loop);
 
-      // Clear con trail sutil (efecto de persistencia de onda)
       ctx.fillStyle = 'rgba(8, 14, 28, 0.18)';
       ctx.fillRect(0, 0, W, H);
 
-      // Actualizar y dibujar ondas
       waves.forEach(w => { w.update(); w.draw(); });
 
-      // Emitir fotones según estado
       emissionTimer++;
       const emitRate = mouse.hovering ? 2 : (mouse.scrolling ? 3 : 1);
       if (emissionTimer % Math.max(1, Math.round(4 / emitRate)) === 0) {
         emitPhotons(emitRate);
       }
 
-      // Actualizar y dibujar partículas
       for (let i = particles.length - 1; i >= 0; i--) {
         particles[i].update();
         particles[i].draw();
@@ -1861,12 +2204,10 @@
       prevMX = mouse.x = e.clientX;
       prevMY = mouse.y = e.clientY;
 
-      // Posicionar núcleo inmediatamente
       cursorCore.style.left = e.clientX + 'px';
       cursorCore.style.top  = e.clientY + 'px';
     });
 
-    // Halo con lag suave (interpolación)
     function updateHalo() {
       haloLerpX += (mouse.x - haloLerpX) * 0.12;
       haloLerpY += (mouse.y - haloLerpY) * 0.12;
@@ -1876,8 +2217,7 @@
     }
     updateHalo();
 
-    // Detección de hover sobre elementos interactivos
-    document.querySelectorAll('a, button, [role="button"], .flow-node, .node-cta').forEach(el => {
+    document.querySelectorAll('a, button, [role="button"], .flow-node, .node-cta, .cta-pill').forEach(el => {
       el.addEventListener('mouseenter', () => {
         mouse.hovering = true;
         document.body.classList.add('cursor-hovering');
@@ -1888,7 +2228,6 @@
       });
     });
 
-    // Detección de scroll activo
     let scrollTimeout;
     window.addEventListener('scroll', () => {
       mouse.scrolling = true;
@@ -1899,7 +2238,7 @@
     // ============================================================
     // 3. BURST DE PARTÍCULAS AL CAMBIAR DE SECCIÓN
     // ============================================================
-    const sectionIds = ['hero', 'flow-section', 'barberia-takeover', 'blueprint-section', 'vision-section', 'closing-section'];
+    const sectionIds = ['hero', 'manifesto-section', 'flow-section', 'barberia-takeover', 'method-section', 'blueprint-section', 'founder-section', 'tech-section', 'vision-section', 'status-closing-section'];
     let activeSectionIndex = 0;
 
     const sectionObserver = new IntersectionObserver((entries) => {
@@ -1908,8 +2247,7 @@
           const idx = sectionIds.indexOf(entry.target.id);
           if (idx !== -1 && idx !== activeSectionIndex) {
             activeSectionIndex = idx;
-            emitPhotons(30, true); // burst al entrar a nueva sección
-            // Activar dot de nav
+            emitPhotons(30, true);
             document.querySelectorAll('.section-dot').forEach((d, i) => {
               d.classList.toggle('active', i === idx);
             });
@@ -1931,19 +2269,8 @@
       });
     });
 
-    // Click en nodo barberías → scroll al takeover
-    const nodeBarberia = document.getElementById('node-barberia');
-    if (nodeBarberia) {
-      nodeBarberia.querySelector('.node-cta').addEventListener('click', () => {
-        document.getElementById('barberia-takeover').scrollIntoView({ behavior: 'smooth' });
-        emitPhotons(40, true);
-      });
-    }
-
     // ============================================================
     // 4. HERO SEQUENCE — estado 1 por tiempo, estado 2 por scroll
-    //    Entrada del estado 1: char a char al cargar (intacto).
-    //    Transición al estado 2: disparada por scroll del usuario.
     // ============================================================
     function initHeroEntrance() {
       const heroLabel  = document.getElementById('hero-label');
@@ -1952,13 +2279,9 @@
       const state2     = document.getElementById('hero-state-2');
       const mainClaim  = state1.querySelector('.hero-main-claim');
 
-      // Ocultar label para su entrada animada
       heroLabel.style.opacity = '0';
-
-      // Estado 1 empieza invisible — se revela por chars con Splitting
       state1.style.opacity = '0';
 
-      // Splitting sobre el h1 del estado 1
       let chars = [];
       if (typeof Splitting === 'function' && mainClaim) {
         mainClaim.setAttribute('data-splitting', '');
@@ -1973,15 +2296,12 @@
 
       let delay = 400;
 
-      // 1. Label entra por tiempo (igual que antes)
       setTimeout(() => {
         heroLabel.style.transition = 'opacity 1s ease-out';
         heroLabel.style.opacity    = '1';
       }, delay);
       delay += 600;
 
-      // 2. Estado 1 — revelar el contenedor instantaneamente (chars tienen su propia transition)
-      // No ponemos transition en el contenedor: el scroll lo va a interpolar sin CSS transition.
       setTimeout(() => {
         state1.style.transition = 'none';
         state1.style.opacity    = '1';
@@ -2000,19 +2320,6 @@
         setTimeout(() => { mainClaim.style.opacity = '1'; }, delay);
       }
 
-      // 3. SCROLL INTERPOLATION — transición continua en rango 0%–20% del viewport
-      //
-      //    progress = clamp(scrollY / (innerHeight * 0.20), 0, 1)
-      //
-      //    p=0 → state1 completamente visible, state2 completamente oculto
-      //    p=1 → state1 completamente oculto, state2 completamente visible
-      //
-      //    En cada frame de rAF aplicamos los valores interpolados directamente
-      //    en style (sin clases CSS ni transition), garantizando que en p=1
-      //    state1 tenga opacity:0 y state2 tenga opacity:1, sin residuos.
-
-      // Estado inicial explícito para state2 (empieza oculto, sin interferir
-      // con la animación de entrada del estado 1 que maneja sus propios timers)
       state2.style.opacity   = '0';
       state2.style.filter    = 'blur(8px)';
       state2.style.transform = 'translateY(20px)';
@@ -2020,34 +2327,27 @@
       let scrollCueShown  = false;
       let rafId           = null;
       let lastScrollY     = -1;
-      // Flag: true solo cuando la animación de entrada del estado 1 ha terminado
-      // (label 400ms + pausa 600ms + chars delay ≈ 1000ms + duración chars)
-      // Usamos 1800ms como margen seguro antes de activar el listener de scroll.
       let entryAnimDone   = false;
 
       function applyHeroProgress(p) {
-        // Easing suave (ease-in-out cúbico) sobre p
         const ease = p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
 
-        // State 1: de visible (p=0) a invisible (p=1)
         const s1opacity    = 1 - ease;
-        const s1blur       = ease * 8;           // 0px → 8px
-        const s1translateY = -(ease * 20);        // 0px → -20px
+        const s1blur       = ease * 8;
+        const s1translateY = -(ease * 20);
 
         state1.style.opacity   = s1opacity;
         state1.style.filter    = `blur(${s1blur.toFixed(2)}px)`;
         state1.style.transform = `translateY(${s1translateY.toFixed(2)}px)`;
 
-        // State 2: de invisible (p=0) a visible (p=1)
         const s2opacity    = ease;
-        const s2blur       = (1 - ease) * 8;     // 8px → 0px
-        const s2translateY = (1 - ease) * 20;     // 20px → 0px
+        const s2blur       = (1 - ease) * 8;
+        const s2translateY = (1 - ease) * 20;
 
         state2.style.opacity   = s2opacity;
         state2.style.filter    = `blur(${s2blur.toFixed(2)}px)`;
         state2.style.transform = `translateY(${s2translateY.toFixed(2)}px)`;
 
-        // Accesibilidad
         if (p >= 0.5) {
           state1.setAttribute('aria-hidden', 'true');
           state2.setAttribute('aria-hidden', 'false');
@@ -2056,7 +2356,6 @@
           state2.setAttribute('aria-hidden', 'true');
         }
 
-        // Scroll cue: solo cuando p llega a 1 (hero-state-2 completamente instalado)
         if (p >= 1 && !scrollCueShown) {
           scrollCueShown = true;
           scrollCue.classList.add('is-active');
@@ -2068,12 +2367,11 @@
 
       function onHeroScrollFrame() {
         rafId = null;
-        if (!entryAnimDone) return; // aún no terminó la entrada del estado 1
+        if (!entryAnimDone) return;
         const sy = window.scrollY;
         if (sy === lastScrollY) return;
         lastScrollY = sy;
 
-        // Rango: 0 → 20% del viewport
         const rangeEnd = window.innerHeight * 0.20;
         const p = Math.min(Math.max(sy / rangeEnd, 0), 1);
         applyHeroProgress(p);
@@ -2083,12 +2381,8 @@
         if (!rafId) rafId = requestAnimationFrame(onHeroScrollFrame);
       }
 
-      // Activar el listener de scroll solo después de que la entrada del estado 1
-      // haya terminado (~1800ms = label 400ms + delay 600ms + chars ~800ms)
-      // Antes de eso, cualquier scroll se ignora y no pisa la animación de entrada.
       setTimeout(() => {
         entryAnimDone = true;
-        // Si el usuario ya hizo scroll durante la entrada, aplicar el estado correcto
         if (window.scrollY > 0) {
           const rangeEnd = window.innerHeight * 0.20;
           const p = Math.min(Math.max(window.scrollY / rangeEnd, 0), 1);
@@ -2099,7 +2393,6 @@
       window.addEventListener('scroll', onHeroScroll, { passive: true });
     }
 
-    // Ejecutar cuando cargue la página
     if (document.readyState === 'complete') {
       initHeroEntrance();
     } else {
@@ -2108,11 +2401,9 @@
 
     // ============================================================
     // 5. DESINTEGRACIÓN DE TEXTO EN SECCIÓN TRANSICIÓN
-    //    Cada char se dispersa en scroll → luego se recompone
     // ============================================================
     const dissolveEl = document.getElementById('dissolve-text');
     if (dissolveEl) {
-      // Splitting ya fue llamado globalmente, los chars existen
       const dissolveChars = dissolveEl.querySelectorAll('.char');
 
       const dissolveObserver = new IntersectionObserver((entries) => {
@@ -2120,14 +2411,12 @@
           const ratio = entry.intersectionRatio;
           dissolveChars.forEach((char, i) => {
             if (ratio > 0.1) {
-              // Recomponer
               const delay = i * 18;
               char.style.transitionDelay = delay + 'ms';
               char.style.opacity  = '1';
               char.style.filter   = 'blur(0)';
               char.style.transform = 'translate(0, 0) rotate(0deg)';
             } else {
-              // Desintegrar — cada char se va a una dirección aleatoria
               if (!char._explodeDir) {
                 char._explodeDir = {
                   x: (Math.random() - 0.5) * 80,
@@ -2146,7 +2435,6 @@
 
       dissolveObserver.observe(dissolveEl);
 
-      // Estilos iniciales de chars
       dissolveChars.forEach(char => {
         char.style.transition = 'transform 0.7s cubic-bezier(0.16,1,0.3,1), opacity 0.7s ease-out, filter 0.7s ease-out';
       });
@@ -2169,8 +2457,6 @@
 
     // ============================================================
     // 7. CANVAS DE BLUEPRINT
-    //    Líneas ortogonales tipo planos arquitectónicos
-    //    que "nacen" de las partículas del cursor al entrar la sección
     // ============================================================
     const bpCanvas = document.getElementById('blueprint-canvas');
     const bpCtx    = bpCanvas.getContext('2d');
@@ -2186,12 +2472,10 @@
       resizeBP();
     });
 
-    // Líneas estructurales almacenadas
     const lines = [];
     const MAX_LINES = 80;
     let bpActive = false;
 
-    // ── scroll progress dentro de la sección blueprint (0 = arriba, 1 = abajo) ──
     let bpScrollProgress = 0;
 
     class StructLine {
@@ -2204,14 +2488,12 @@
         this.x1 = Math.random() * W2;
         this.y1 = Math.random() * H2;
 
-        // Ortogonales — 60% horizontal, 40% vertical (como planos)
         this.horizontal = Math.random() > 0.4;
         const len = 30 + Math.random() * 220;
         const dir = Math.random() > 0.5 ? 1 : -1;
         this.x2 = this.horizontal ? this.x1 + len * dir : this.x1;
         this.y2 = this.horizontal ? this.y1 : this.y1 + len * dir;
 
-        // Algunas líneas con un codo en L (más plano arquitectónico)
         this.hasElbow = Math.random() > 0.65;
         if (this.hasElbow) {
           const elbowLen = 20 + Math.random() * 80;
@@ -2224,13 +2506,10 @@
         this.life      = 1;
         this.fadeSpeed = 0.002 + Math.random() * 0.004;
 
-        // tipo: 'light' (teal/offwhite — sobre fondo oscuro) o 'dark' (navy/petrol — sobre fondo claro)
         this.type = Math.random() > 0.5 ? 'teal' : 'offwhite';
       }
 
       update() {
-        // El tipo se recalcula según el scroll progress para que las líneas
-        // sean visibles siempre: claras sobre oscuro, oscuras sobre claro
         const t = bpScrollProgress;
         if (t < 0.5) {
           this.type = Math.random() > 0.5 ? 'teal' : 'offwhite';
@@ -2250,11 +2529,8 @@
         const t    = bpScrollProgress;
         const vis  = Math.min(this.progress, this.life);
 
-        // Colores: en la primera mitad del scroll son claros/teal (visibles sobre oscuro)
-        // en la segunda mitad se vuelven navy/petrol (visibles sobre claro)
         let color, alpha;
         if (t < 0.5) {
-          // fondo oscuro → líneas claras
           if (this.type === 'teal') {
             color = `74,155,147`;
             alpha = vis * 0.55;
@@ -2263,8 +2539,7 @@
             alpha = vis * 0.22;
           }
         } else {
-          // fondo claro → líneas oscuras
-          const blend = (t - 0.5) * 2; // 0→1 conforme se llega al blanco
+          const blend = (t - 0.5) * 2;
           if (this.type === 'navy') {
             color = `15,30,58`;
             alpha = vis * (0.12 + blend * 0.25);
@@ -2286,7 +2561,6 @@
         bpCtx.lineTo(px, py);
         bpCtx.stroke();
 
-        // Codo en L si aplica y la línea llegó al final
         if (this.hasElbow && this.progress > 0.98) {
           const elbowAlpha = alpha * this.life;
           bpCtx.strokeStyle = `rgba(${color}, ${elbowAlpha})`;
@@ -2296,7 +2570,6 @@
           bpCtx.stroke();
         }
 
-        // Vértice terminal — pequeño punto teal siempre
         if (this.progress > 0.95) {
           const dotAlpha = this.life * (t < 0.5 ? 0.7 : 0.4);
           bpCtx.beginPath();
@@ -2309,30 +2582,36 @@
       }
     }
 
-    // Inicializar líneas
     for (let i = 0; i < MAX_LINES; i++) {
       const l = new StructLine();
       l.progress = Math.random();
       lines.push(l);
     }
 
-    // ── Scroll listener para calcular bpScrollProgress ──
     function updateBPScrollProgress() {
       if (!bpSection) return;
       const rect = bpSection.getBoundingClientRect();
       const total = bpSection.offsetHeight - window.innerHeight;
-      if (total <= 0) { bpScrollProgress = 0; return; }
+      if (total <= 0) {
+        // For short blueprint sections, use a simpler progress calculation
+        const viewportCenter = window.innerHeight / 2;
+        const sectionCenter = rect.top + rect.height / 2;
+        bpScrollProgress = Math.max(0, Math.min(1, 1 - (sectionCenter / window.innerHeight)));
+        const bpHeadline = document.querySelector('.blueprint-headline');
+        if (bpScrollProgress > 0.55) {
+          bpHeadline && bpHeadline.classList.add('on-light');
+        } else {
+          bpHeadline && bpHeadline.classList.remove('on-light');
+        }
+        return;
+      }
       bpScrollProgress = Math.max(0, Math.min(1, -rect.top / total));
 
-      // Adaptar color de texto del blueprint según profundidad
       const bpHeadline = document.querySelector('.blueprint-headline');
-      const bpBody     = document.querySelector('.blueprint-body');
       if (bpScrollProgress > 0.55) {
         bpHeadline && bpHeadline.classList.add('on-light');
-        bpBody     && bpBody.classList.add('on-light');
       } else {
         bpHeadline && bpHeadline.classList.remove('on-light');
-        bpBody     && bpBody.classList.remove('on-light');
       }
     }
     window.addEventListener('scroll', updateBPScrollProgress, { passive: true });
@@ -2346,7 +2625,6 @@
     }
     loopBP();
 
-    // Activar blueprint al entrar la sección
     const bpObserver = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         bpActive = e.isIntersecting;
@@ -2358,8 +2636,6 @@
 
     // ============================================================
     // 8. ISOTIPO SIGNAL — LOGO DEFINITIVO ANIMADO
-    //    Motor extraído de BRANDING_DEFINITIVO v5
-    //    Arco abierto + nodo + fotón + onda sinusoidal
     // ============================================================
     (function initSignalLogo() {
       const logoCanvas = document.getElementById('hero-isotipo');
@@ -2376,7 +2652,6 @@
 
       const cx = SIZE / 2, cy = SIZE / 2, r = SIZE * 0.38;
 
-      // ── drawArc: arco abierto, apertura 0.55 rad a cada lado ──
       function ldrawArc(alpha) {
         const openA = 0.55, s = Math.PI * 0.18 + openA, e = Math.PI * 2.18 - openA;
         lctx.save();
@@ -2390,7 +2665,6 @@
         lctx.restore();
       }
 
-      // ── drawWave: onda sinusoidal interna ──
       function ldrawWave(phase) {
         const openA = 0.55, s = Math.PI * 0.18 + openA;
         lctx.save();
@@ -2410,7 +2684,6 @@
         lctx.restore();
       }
 
-      // ── drawNode: nodo central ──
       function ldrawNode() {
         lctx.save();
         lctx.shadowColor = '#4A9B93';
@@ -2423,7 +2696,6 @@
         lctx.restore();
       }
 
-      // ── drawPhoton: fotón en órbita ──
       function ldrawPhoton(angle) {
         const px = cx + Math.cos(angle) * r;
         const py = cy + Math.sin(angle) * r;
@@ -2437,7 +2709,6 @@
         lctx.restore();
       }
 
-      // ── drawGlow: halo suave detrás del nodo ──
       function ldrawGlow() {
         const grad = lctx.createRadialGradient(cx, cy, 0, cx, cy, r * 0.7);
         grad.addColorStop(0,   'rgba(74, 155, 147, 0.10)');
@@ -2451,7 +2722,6 @@
         lctx.restore();
       }
 
-      // ── Loop de animación ──
       let photonAngle = Math.PI * 1.05;
       let wavePhase   = 0;
 
@@ -2464,8 +2734,8 @@
         ldrawNode();
         ldrawPhoton(photonAngle);
 
-        photonAngle += 0.018;   // velocidad de órbita del fotón
-        wavePhase   += 0.04;    // velocidad de la onda interna
+        photonAngle += 0.018;
+        wavePhase   += 0.04;
       }
 
       document.fonts.ready.then(() => loopLogo());
@@ -2473,7 +2743,6 @@
 
     // ============================================================
     // 9. ONDAS DESDE EL LOGO ORBITAL
-    //    Pulsos periódicos que nacen del centro del logo
     // ============================================================
     const logoWrap = document.querySelector('.logo-orbital-wrap');
     let logoRect = null;
@@ -2486,14 +2755,11 @@
     updateLogoRect();
     window.addEventListener('scroll', updateLogoRect, { passive: true });
 
-    // Emitir fotones desde el logo cada ~2s si está visible
     setInterval(() => {
       if (!logoRect) return;
       const lx = logoRect.left + logoRect.width  / 2;
       const ly = logoRect.top  + logoRect.height / 2;
-      // Solo si está en viewport
       if (ly > 0 && ly < H) {
-        // Pulso orbital: 8 fotones en ángulos distribuidos
         for (let i = 0; i < 8; i++) {
           const angle = (i / 8) * Math.PI * 2;
           const p = new Photon(lx, ly);
@@ -2510,66 +2776,5 @@
   })();
   </script>
 
-<script data-pplx-inline-edit>
-(function(){
-  if(window===window.top)return;
-  function inlineAll(orig,clone){
-    if(orig.nodeType!==1)return;
-    try{
-      var cs=getComputedStyle(orig);
-      var t='';
-      for(var i=0;i<cs.length;i++){t+=cs[i]+':'+cs.getPropertyValue(cs[i])+';';}
-      clone.style.cssText=t;
-    }catch(e){}
-    var oc=orig.children,cc=clone.children;
-    for(var j=0;j<oc.length&&j<cc.length;j++){inlineAll(oc[j],cc[j]);}
-  }
-  function stripExternal(clone){
-    var imgs=clone.querySelectorAll('img');
-    for(var i=0;i<imgs.length;i++){
-      var s=imgs[i].getAttribute('src');
-      if(s&&!s.startsWith('data:'))imgs[i].removeAttribute('src');
-    }
-    var all=clone.querySelectorAll('*');
-    for(var i=0;i<all.length;i++){
-      var st=all[i].style.cssText;
-      if(st&&st.indexOf('url(')>=0){
-        all[i].style.cssText=st.replace(/url\(["']?(?!data:)[^)"']*["']?\)/gi,'none');
-      }
-    }
-  }
-  window.addEventListener('message',function(e){
-    if(!e.data||e.data.type!=='INLINE_EDIT_CAPTURE_REQUEST')return;
-    var scrollX=window.scrollX||window.pageXOffset||0;
-    var scrollY=window.scrollY||window.pageYOffset||0;
-    var w=window.innerWidth,h=window.innerHeight;
-    try{
-      var clone=document.documentElement.cloneNode(true);
-      var rm=clone.querySelectorAll('script,link[rel="stylesheet"],style');
-      for(var i=0;i<rm.length;i++){rm[i].remove();}
-      inlineAll(document.documentElement,clone);
-      stripExternal(clone);
-      var html=new XMLSerializer().serializeToString(clone);
-      var svg='<svg xmlns="http://www.w3.org/2000/svg" width="'+w+'" height="'+h+'">'
-        +'<foreignObject width="100%" height="100%">'
-        +'<div xmlns="http://www.w3.org/1999/xhtml" style="width:'+w+'px;height:'+h+'px;overflow:hidden">'
-        +'<div style="transform:translate(-'+scrollX+'px,-'+scrollY+'px);transform-origin:top left">'
-        +html+'</div></div></foreignObject></svg>';
-      var svgUrl='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
-      var img=new Image();
-      img.onload=function(){
-        var c=document.createElement('canvas');c.width=w;c.height=h;
-        c.getContext('2d').drawImage(img,0,0);
-        window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:c.toDataURL('image/png'),scrollX:scrollX,scrollY:scrollY},'*');
-      };
-      img.onerror=function(){
-        window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:null,scrollX:scrollX,scrollY:scrollY},'*');
-      };
-      img.src=svgUrl;
-    }catch(err){
-      window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:null,scrollX:scrollX,scrollY:scrollY},'*');
-    }
-  });
-})();
-</script></body>
+</body>
 </html>
