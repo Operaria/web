@@ -424,12 +424,13 @@
       margin-bottom: 72px;
     }
 
-    /* Nodos de segmento — 1 principal + 2 satélites */
+    /* Nodos de segmento — principal centrado, satélites a los lados */
     .flow-nodes {
-      display: grid;
-      grid-template-columns: 1fr 1.25fr 1fr;
-      align-items: start;
-      gap: 0;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: center;
+      gap: clamp(32px, 4vw, 64px);
       width: 100%;
       max-width: 1100px;
       position: relative;
@@ -440,8 +441,8 @@
       content: '';
       position: absolute;
       top: 52px;
-      left: calc(16.6% + 40px);
-      right: calc(16.6% + 40px);
+      left: 20%;
+      right: 20%;
       height: 1px;
       background: linear-gradient(90deg,
         transparent 0%,
@@ -454,13 +455,9 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 0 clamp(12px, 2vw, 32px);
+      padding: 0 clamp(12px, 2vw, 24px);
       cursor: pointer;
       position: relative;
-    }
-
-    .flow-node.node-primary {
-      order: 0;
     }
 
     .node-orbit {
@@ -632,13 +629,30 @@
       border: 1px solid var(--teal-dim);
     }
 
+    .flow-node {
+      flex: 0 1 auto;
+      width: clamp(140px, 20vw, 220px);
+    }
+
+    .flow-node.node-primary {
+      flex: 0 1 auto;
+      width: clamp(180px, 25vw, 280px);
+      order: 0;
+    }
+
     @media (max-width: 640px) {
       .flow-nodes {
-        grid-template-columns: 1fr;
+        flex-direction: column;
+        align-items: center;
         gap: 48px;
       }
       .flow-nodes::before { display: none; }
       .flow-node.node-primary { order: -1; }
+      .flow-node,
+      .flow-node.node-primary {
+        width: 100%;
+        max-width: 280px;
+      }
     }
 
     /* =========================================================
@@ -852,7 +866,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: clamp(80px, 12vh, 160px) clamp(24px, 6vw, 80px);
+      padding: clamp(40px, 6vh, 80px) clamp(24px, 6vw, 80px);
       background: var(--dark-bg);
       text-align: center;
     }
@@ -870,19 +884,19 @@
     .method-headline {
       font-family: var(--font-display);
       font-weight: 300;
-      font-size: clamp(36px, 5.5vw, 76px);
+      font-size: clamp(32px, 4.5vw, 64px);
       line-height: 1.08;
       color: var(--off-white);
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
 
     .method-intro {
       font-family: var(--font-ui);
-      font-size: clamp(14px, 1.4vw, 16px);
+      font-size: clamp(13px, 1.2vw, 15px);
       line-height: 1.7;
       color: var(--off-white-60);
       max-width: 600px;
-      margin-bottom: 64px;
+      margin-bottom: 40px;
     }
 
     .method-steps {
@@ -895,32 +909,32 @@
     }
 
     .method-step {
-      padding: clamp(20px, 2vw, 32px);
+      padding: clamp(16px, 1.5vw, 24px);
       border-top: 1px solid var(--teal-dim);
     }
 
     .method-step-number {
       font-family: var(--font-display);
       font-weight: 300;
-      font-size: clamp(32px, 4vw, 48px);
+      font-size: clamp(28px, 3vw, 40px);
       color: var(--teal);
       line-height: 1;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
     }
 
     .method-step-title {
       font-family: var(--font-ui);
       font-weight: 600;
-      font-size: clamp(14px, 1.3vw, 16px);
+      font-size: clamp(13px, 1.2vw, 15px);
       color: var(--off-white);
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .method-step-body {
       font-family: var(--font-ui);
       font-weight: 300;
-      font-size: clamp(13px, 1.1vw, 15px);
-      line-height: 1.65;
+      font-size: clamp(12px, 1vw, 14px);
+      line-height: 1.55;
       color: rgba(242, 240, 235, 0.8);
     }
 
@@ -931,61 +945,15 @@
     }
 
     /* =========================================================
-       SECCIÓN 7 — BLUEPRINT (puente corto)
+       SECCIÓN 7 — FUNDADOR
     ========================================================= */
-    #blueprint-section {
-      min-height: clamp(280px, 40vh, 420px);
-      position: relative;
-      overflow: hidden;
+    #founder-section {
+      min-height: 100vh;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       padding: clamp(40px, 6vh, 80px) clamp(24px, 6vw, 80px);
-      background: var(--dark-bg);
-    }
-
-    #blueprint-canvas {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .blueprint-content {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      max-width: 860px;
-    }
-
-    .blueprint-headline {
-      font-family: var(--font-display);
-      font-weight: 300;
-      font-size: clamp(36px, 5.5vw, 72px);
-      line-height: 1.1;
-      color: var(--off-white);
-    }
-
-    .blueprint-headline em {
-      color: var(--teal);
-      font-style: italic;
-    }
-
-    /* =========================================================
-       SECCIÓN 8 — FUNDADOR
-    ========================================================= */
-    #founder-section {
-      min-height: 70vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: clamp(80px, 12vh, 160px) clamp(24px, 6vw, 80px);
       background: var(--dark-bg);
       text-align: center;
     }
@@ -1586,6 +1554,24 @@
     }
 
     /* =========================================================
+       SCROLL SNAP — DESKTOP ONLY
+    ========================================================= */
+    @media (min-width: 768px) {
+      html {
+        scroll-snap-type: y mandatory;
+        scroll-behavior: smooth;
+      }
+      section {
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+        min-height: 100vh;
+      }
+      footer {
+        scroll-snap-align: none;
+      }
+    }
+
+    /* =========================================================
        WHATSAPP FAB
     ========================================================= */
     .whatsapp-fab {
@@ -1639,7 +1625,6 @@
     <div class="section-dot" data-target="flow-section" title="Operaria Flow"></div>
     <div class="section-dot" data-target="barberia-takeover" title="BarberIA 360°"></div>
     <div class="section-dot" data-target="method-section" title="Método"></div>
-    <div class="section-dot" data-target="blueprint-section" title="Blueprint"></div>
     <div class="section-dot" data-target="founder-section" title="Fundador"></div>
     <div class="section-dot" data-target="tech-section" title="Infraestructura"></div>
     <div class="section-dot" data-target="vision-section" title="Visión"></div>
@@ -1655,7 +1640,7 @@
       <canvas id="hero-isotipo" width="130" height="130" aria-hidden="true"></canvas>
     </div>
 
-    <p class="hero-label" id="hero-label">Sistema Operario — v1.0</p>
+    <p class="hero-label" id="hero-label">OPERARIA</p>
 
     <div class="hero-sequence" id="hero-claim" aria-label="Encendemos la operación, para devolverle el tiempo a las personas">
       <div class="hero-state hero-state-1" id="hero-state-1" aria-hidden="false">
@@ -1684,7 +1669,7 @@
   ============================================================ -->
   <section id="transition-zone" aria-hidden="true">
     <p id="dissolve-text" data-splitting>
-      De lo oscuro a lo simple.<br/>Del ruido a la estructura.
+      Conectamos lo que hay.<br/>Ordenamos lo que tienes.
     </p>
   </section>
 
@@ -1694,7 +1679,7 @@
   <section id="manifesto-section">
     <p class="manifesto-eyebrow reveal">— Qué es Operaria —</p>
     <h2 class="manifesto-headline reveal reveal-delay-1">
-      No somos software.<br/>Somos la capa que ordena lo que ya existe.
+      Somos la capa que ordena lo que ya existe.
     </h2>
     <p class="manifesto-body reveal reveal-delay-2">
       Operaria es una capa de inteligencia operativa. No reemplaza herramientas, no pide aprender una aplicación nueva, no entrega dashboards que nadie abre. Entra al sistema que el negocio o la institución ya usa —WhatsApp, agenda, planillas, pagos— y lo pone a trabajar en conjunto. Cuando la operación queda ordenada, el tiempo vuelve a las personas que estaban sosteniéndola con memoria y paciencia.
@@ -1859,30 +1844,21 @@
   </section>
 
   <!-- ============================================================
-       SECCIÓN 7 — BLUEPRINT (puente corto)
-  ============================================================ -->
-  <section id="blueprint-section" aria-labelledby="blueprint-title">
-    <canvas id="blueprint-canvas" aria-hidden="true"></canvas>
-    <div class="blueprint-content">
-      <h2 class="blueprint-headline reveal" id="blueprint-title">
-        Donde pasa una partícula, <em>queda una línea.</em>
-      </h2>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       SECCIÓN 8 — FUNDADOR
+       SECCIÓN 7 — FUNDADOR
   ============================================================ -->
   <section id="founder-section">
     <p class="founder-eyebrow reveal">— El origen —</p>
     <h2 class="founder-headline reveal reveal-delay-1">
-      Operaria nace de mirar sistemas complejos desde adentro.
+      Operaria nace de mirar sistemas complejos por dentro.
     </h2>
     <p class="founder-body reveal reveal-delay-2">
-      El fundador de Operaria es gestor hospitalario y médico. Durante años ha trabajado dentro de redes de salud pública en Chile, coordinando indicadores, eficiencia operativa y equipos en entornos donde cada hora tiene consecuencias sobre personas reales.
+      Operaria nace de mirar sistemas complejos por dentro. De pasar años intentando que datos, equipos y procesos hablen entre sí, y de comprobar que el problema casi nunca está en la tecnología: está en lo que nadie coordina.
     </p>
     <p class="founder-body reveal reveal-delay-2">
-      Esa mirada —la del operador que ve dónde se pierde la energía del sistema antes que nadie más— es la que hoy conduce Operaria. No venimos desde la tecnología buscando un problema. Venimos desde la operación, buscando la forma más limpia de devolver tiempo.
+      Por eso Operaria no llega a reemplazar herramientas. Llega a conectar lo que ya hay y ordenar lo que ya se hace, para que el sistema funcione sin pedirle más esfuerzo a las personas.
+    </p>
+    <p class="founder-body reveal reveal-delay-2">
+      Su fundador es gestor hospitalario y médico, con experiencia en redes públicas y privadas de salud. Esa mirada es la que define la disciplina operativa de Operaria: foco en lo que se mide, respeto por quien ejecuta, claridad sobre lo que cambia.
     </p>
   </section>
 
@@ -1941,10 +1917,10 @@
       <div class="vision-left">
         <p class="vision-eyebrow reveal">Operaria Health — Línea en piloto</p>
         <h2 class="vision-headline reveal reveal-delay-1" id="vision-title">
-          Diseñar la operación<br/>de quienes <em>menos tiempo<br/>tienen por perder.</em>
+          Devolverle el tiempo<br/>a quienes <em>cuidan pacientes.</em>
         </h2>
         <p class="vision-body reveal reveal-delay-2">
-          Operaria Health es la línea en piloto: una capa de inteligencia operativa diseñada para devolverle tiempo a los pacientes. En un hospital, cada hora perdida en coordinación, espera o fricción administrativa es una hora que el paciente no recupera. Ahí es donde entramos: a ordenar lo que ya existe, para que el sistema vuelva a funcionar a la velocidad de quien lo necesita. Durante Q2 2026 iniciamos el primer piloto con una institución de salud pública chilena.
+          Operaria Health es la línea en piloto: una capa de inteligencia operativa diseñada para devolverle tiempo a los pacientes. En el área de la salud, cada hora perdida en coordinación, espera o fricción administrativa es una hora que el paciente no recupera. Ahí es donde entramos: a ordenar lo que ya existe, para que el sistema vuelva a funcionar a la velocidad de quien lo necesita. Durante Q2 2026 iniciamos el primer piloto con una institución de salud pública chilena.
         </p>
 
         <div class="vision-pillars reveal reveal-delay-3">
@@ -1957,14 +1933,13 @@
           <div class="pillar">
             <span class="pillar-number">02</span>
             <p class="pillar-text">
-              <strong>Health en piloto.</strong> Llevamos esa inteligencia a una primera institución de salud pública.
+              <strong>Health en piloto.</strong> Llevamos esa inteligencia a una primera institución de salud.
             </p>
           </div>
           <div class="pillar">
             <span class="pillar-number">03</span>
             <p class="pillar-text">
-              <strong>Siempre fotones.</strong> Energía que entra al sistema y
-              lo vuelve más simple, liviano y funcional.
+              <strong>Encender la operación.</strong> Para que despierten los sistemas de atención.
             </p>
           </div>
         </div>
@@ -2002,8 +1977,7 @@
       <h3 class="status-headline reveal reveal-delay-1">Q2 2026</h3>
       <ul class="status-list reveal reveal-delay-2">
         <li>Activando BarberIA 360° con primer cliente en operación real.</li>
-        <li>Cerrando el piloto de Operaria Health con institución de salud pública chilena.</li>
-        <li>Validando el método de diagnóstico operativo para el vertical de restaurantes.</li>
+        <li>Iniciando la fase de preparación de la línea Health con un centro de salud complementario.</li>
       </ul>
     </div>
 
@@ -2266,7 +2240,7 @@
     // ============================================================
     // 3. BURST DE PARTÍCULAS AL CAMBIAR DE SECCIÓN
     // ============================================================
-    const sectionIds = ['hero', 'manifesto-section', 'flow-section', 'barberia-takeover', 'method-section', 'blueprint-section', 'founder-section', 'tech-section', 'vision-section', 'status-closing-section'];
+    const sectionIds = ['hero', 'manifesto-section', 'flow-section', 'barberia-takeover', 'method-section', 'founder-section', 'tech-section', 'vision-section', 'status-closing-section'];
     let activeSectionIndex = 0;
 
     const sectionObserver = new IntersectionObserver((entries) => {
@@ -2484,146 +2458,7 @@
     revealEls.forEach(el => revealObserver.observe(el));
 
     // ============================================================
-    // 7. CANVAS DE BLUEPRINT
-    // ============================================================
-    const bpCanvas = document.getElementById('blueprint-canvas');
-    const bpCtx    = bpCanvas.getContext('2d');
-
-    const bpSection = document.getElementById('blueprint-section');
-
-    function resizeBP() {
-      bpCanvas.width  = bpSection ? bpSection.offsetWidth : window.innerWidth;
-      bpCanvas.height = bpSection ? bpSection.offsetHeight : window.innerHeight;
-    }
-    resizeBP();
-    window.addEventListener('resize', () => {
-      resizeBP();
-    });
-
-    const lines = [];
-    const MAX_LINES = 80;
-    let bpActive = false;
-
-    let bpScrollProgress = 0;
-
-    class StructLine {
-      constructor() {
-        this.reset();
-      }
-      reset() {
-        const W2 = bpCanvas.width;
-        const H2 = bpCanvas.height;
-        this.x1 = Math.random() * W2;
-        this.y1 = Math.random() * H2;
-
-        this.horizontal = Math.random() > 0.4;
-        const len = 30 + Math.random() * 220;
-        const dir = Math.random() > 0.5 ? 1 : -1;
-        this.x2 = this.horizontal ? this.x1 + len * dir : this.x1;
-        this.y2 = this.horizontal ? this.y1 : this.y1 + len * dir;
-
-        this.hasElbow = Math.random() > 0.65;
-        if (this.hasElbow) {
-          const elbowLen = 20 + Math.random() * 80;
-          this.xElbow = this.x2;
-          this.yElbow = this.y2 + elbowLen * (Math.random() > 0.5 ? 1 : -1);
-        }
-
-        this.progress  = 0;
-        this.speed     = 0.005 + Math.random() * 0.015;
-        this.life      = 1;
-        this.fadeSpeed = 0.002 + Math.random() * 0.004;
-
-        this.type = Math.random() > 0.5 ? 'teal' : 'offwhite';
-      }
-
-      update() {
-        if (this.progress < 1) {
-          this.progress = Math.min(1, this.progress + this.speed);
-        } else {
-          this.life -= this.fadeSpeed;
-        }
-        if (this.life <= 0) this.reset();
-      }
-
-      draw() {
-        const vis  = Math.min(this.progress, this.life);
-
-        // Always teal lines on dark background
-        const color = this.type === 'teal' ? `74,155,147` : `242,240,235`;
-        const alpha = this.type === 'teal' ? vis * 0.6 : vis * 0.2;
-
-        const px = this.x1 + (this.x2 - this.x1) * Math.min(this.progress, 1);
-        const py = this.y1 + (this.y2 - this.y1) * Math.min(this.progress, 1);
-
-        bpCtx.save();
-        bpCtx.strokeStyle = `rgba(${color}, ${alpha})`;
-        bpCtx.lineWidth   = 0.7;
-        bpCtx.beginPath();
-        bpCtx.moveTo(this.x1, this.y1);
-        bpCtx.lineTo(px, py);
-        bpCtx.stroke();
-
-        if (this.hasElbow && this.progress > 0.98) {
-          const elbowAlpha = alpha * this.life;
-          bpCtx.strokeStyle = `rgba(${color}, ${elbowAlpha})`;
-          bpCtx.beginPath();
-          bpCtx.moveTo(this.x2, this.y2);
-          bpCtx.lineTo(this.xElbow, this.yElbow);
-          bpCtx.stroke();
-        }
-
-        if (this.progress > 0.95) {
-          const dotAlpha = this.life * 0.7;
-          bpCtx.beginPath();
-          bpCtx.arc(this.x2, this.y2, 1.5, 0, Math.PI * 2);
-          bpCtx.fillStyle = `rgba(74,155,147, ${dotAlpha})`;
-          bpCtx.fill();
-        }
-
-        bpCtx.restore();
-      }
-    }
-
-    for (let i = 0; i < MAX_LINES; i++) {
-      const l = new StructLine();
-      l.progress = Math.random();
-      lines.push(l);
-    }
-
-    function updateBPScrollProgress() {
-      if (!bpSection) return;
-      const rect = bpSection.getBoundingClientRect();
-      const total = bpSection.offsetHeight - window.innerHeight;
-      if (total <= 0) {
-        const sectionCenter = rect.top + rect.height / 2;
-        bpScrollProgress = Math.max(0, Math.min(1, 1 - (sectionCenter / window.innerHeight)));
-        return;
-      }
-      bpScrollProgress = Math.max(0, Math.min(1, -rect.top / total));
-    }
-    window.addEventListener('scroll', updateBPScrollProgress, { passive: true });
-    updateBPScrollProgress();
-
-    function loopBP() {
-      requestAnimationFrame(loopBP);
-      if (!bpActive) return;
-      bpCtx.clearRect(0, 0, bpCanvas.width, bpCanvas.height);
-      lines.forEach(l => { l.update(); l.draw(); });
-    }
-    loopBP();
-
-    const bpObserver = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        bpActive = e.isIntersecting;
-        if (bpActive) resizeBP();
-      });
-    }, { threshold: 0.05 });
-
-    if (bpSection) bpObserver.observe(bpSection);
-
-    // ============================================================
-    // 8. ISOTIPO SIGNAL — LOGO DEFINITIVO ANIMADO
+    // 7. ISOTIPO SIGNAL — LOGO DEFINITIVO ANIMADO
     // ============================================================
     (function initSignalLogo() {
       const logoCanvas = document.getElementById('hero-isotipo');
